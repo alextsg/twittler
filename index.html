@@ -3,22 +3,74 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="twittler.css">
   </head>
   <body>
+    <div id="tweets"></div>
+    <div id="profilediv"><div id="name"><h1>Click a username</h1></div><div id="profile"></div></div>
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $tweets = $('#tweets');
+        var tweetarray = [];
+        var $complete;
+        //var userobject = {};
+        update();
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        //setInterval(update, 5000);
+        
+
+        function update() {
+          $tweets.html("");
+          var index = streams.home.length - 1;
+          tweetarray = [];
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var date = tweet.created_at.toString();
+            date = date.slice(0,24);
+            tweetarray[index] = [tweet.user, tweet.message, date];
+            index -= 1;
+          }
+          for (var i=tweetarray.length-1;i>=tweetarray.length-10;i--){
+            $complete = $('<div class="eachtweet"><div class="user">@' + tweetarray[i][0] + '</div>' + '<p><div id="twt">' + tweetarray[i][1] + '</div>' + '<p><div id="timestamp">tweeted on ' + tweetarray[i][2] + '</div></p></div>');
+            $complete.appendTo($tweets);
+          }
+          $(".user").on("click", function(){
+            var username = $(this).html();
+            $("#name").html("<h1>"+username+"'s tweets<h1>");
+            //$("#name").html("<h1>"+Math.random()+"<h1>");
+            username = username.slice(1);
+            //var usertweetarray = [];
+            profileupdate();  
+            function profileupdate(){
+              var usertweetarray = [];
+                $("#profile").html("");
+                for (var i=0;i<tweetarray.length;i++){
+                  if (tweetarray[i][0] == username){
+                    usertweetarray.unshift(tweetarray[i]);
+                  };
+                };
+                for (var i=0;i<8;i++){
+                  $usercomplete = $('<div class="profileeachtweet"><div class="user">@' + usertweetarray[i][0] + '</div>' + '<p><div id="twt">' + usertweetarray[i][1] + '</div>' + '<p><div id="timestamp">tweeted on ' + usertweetarray[i][2] + '</div></p></div>');
+                  $usercomplete.appendTo($("#profile"));
+                };
+              //setTimeout(profileupdate, 5000);
+            };
+          });
+          setTimeout(update,5000);
+        };
+
+  
+
+            
+
+
+        
+
+        
+        
+
+
 
       });
 

@@ -1,0 +1,89 @@
+body {
+    background-color: lightblue;
+    font-family: Arial;
+}
+h1 {
+    color: #d4d4d4;
+    text-align:center;
+    margin-top:30px;
+}
+#tweets{
+	background-color: lightblue;
+	width:48%;
+	display:inline-block;
+	/*float:left;*/
+}
+.eachtweet{
+	background-color: #ffffff;
+	margin:10px 0px 10px 10px;
+	padding:10px;
+}
+.profileeachtweet{
+	background-color: #e0f0ff;
+	margin:10px;
+	padding:10px;
+	/*float:left;*/
+}
+#profilediv {
+	background-color: #ffffff;
+	width:48%;
+	height: 790px;
+	float:right;
+	display:inline-block;
+	margin-top:10px;
+	margin-right:10px;
+	margin-left:10px;
+	padding:10px;
+}
+#profile{
+	background-color: #ffffff;
+	display:inline-block;
+	/*
+	margin-top:10px;
+	margin-right:10px;
+	margin-left:10px;
+	padding:10px;*/
+	width:100%;
+}
+.user {
+	display:inline;
+	font-size: 14pt;
+	font-weight: bold;
+	color:#4b4b4b;
+	margin:0px;
+	padding:0px;
+	border-width: 1px;
+	border-color:black;
+}
+.user:hover{
+	color:#A2CFDE;
+	cursor:pointer;
+	cursor:hand;
+}
+#twt {
+	display:inline;
+	margin:0px;
+	padding:0px;
+	padding-left:19px;
+	border-width:1px;
+	border-color:black;
+}
+#timestamp {
+	font-size: 8pt;
+	color:gray;
+	padding-left:19px;
+}
+p {
+	margin:0px;
+	padding:0px;
+}
+
+
+
+#test{
+	display:inline;
+}
+
+#test2{
+	display:inline;
+}
